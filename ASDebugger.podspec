@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ASDebugger"
-  s.version          = "0.0.3"
+  s.version          = "0.0.1"
   s.summary          = "ASDebugger is a remote debugging toolset for your native iOS app."
 
   s.description      = <<-DESC
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "square" => "square.zhao.wei@gmail.com" }
-  s.source           = { :git => "https://github.com/AppScaffold/ASDebugger.git" }
+  s.source           = { :git => "https://github.com/AppScaffold/ASDebugger.git", :tag => s.version }
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
