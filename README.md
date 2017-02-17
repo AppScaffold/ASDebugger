@@ -1,19 +1,19 @@
 # ASDebugger
 
-ASDebugger is a remote debugging toolset for iOS App. It is a client library and gateway server combination
-
 [![CI Status](http://img.shields.io/travis/利伽/ASDebugger.svg?style=flat)](https://travis-ci.org/squarezw/ASDebugger)
 [![Version](https://img.shields.io/cocoapods/v/ASDebugger.svg?style=flat)](http://cocoapods.org/pods/ASDebugger)
 [![License](https://img.shields.io/cocoapods/l/ASDebugger.svg?style=flat)](http://cocoapods.org/pods/ASDebugger)
 [![Platform](https://img.shields.io/cocoapods/p/ASDebugger.svg?style=flat)](http://cocoapods.org/pods/ASDebugger)
 
+ASDebugger is a remote debugging toolset for iOS App. It is a client library and gateway server combination
+
 it can remote debugging network requests, effortlessly Mock Data, Intergrated with iOS easily, without any tooling involved like Charles
 
 ## Usage
 
-Please register a appkey on [AppScaffold](http://www.appscaffold.net) WebSite
+Please register an appkey on [AppScaffold](http://www.appscaffold.net) WebSite
 
-To connect automatically to the Observer Host:
+And then we mostly put launch code in the AppDelegate class function of `didFinishConfiguringLaunch.`
 
 ```
 ASDebugger.start(withAppKey: "[YourAppKey]")
