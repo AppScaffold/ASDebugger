@@ -1,0 +1,13 @@
+{
+    "banners": [{
+                "id": 1,
+                "photo": "http://www.google.com/333333.jpg",
+                "url": "http://www.google.com/banners/1.html"
+                },
+                {
+                "id": 1,
+                "photo": "http://www.google.com/41653b5644791b8b9b01a00b6e121049.png",
+                "url": "http://www.google.com/banners/1.html"
+                }
+                ]
+}
