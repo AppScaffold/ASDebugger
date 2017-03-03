@@ -16,8 +16,8 @@
 {
     ASDViewController *vc = [ASDViewController new];
     
-    [ASDebugger startWithAppKey:@"cac4d9b62e46a654778e"];
-//  [ASDebugger initWithAppKey:@"cac4d9b62e46a654778e"];
+    [ASDebugger startWithAppKey:@"cac4d9b62e46a654778e", secret:@"4193d59f-fc56-4e47-abe8-6de9d508ca1f"];
+//  [ASDebugger initWithAppKey:@"cac4d9b62e46a654778e", secret:@"4193d59f-fc56-4e47-abe8-6de9d508ca1f"];
     
 //    [[ASDebugger shared] enableMock];
 //    [[ASDebugger shared] enableMockWithPath:@"user/profile"];
