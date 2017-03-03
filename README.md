@@ -16,7 +16,7 @@ Please register an appkey on [AppScaffold](http://www.appscaffold.net) WebSite
 And then we mostly put launch code in the AppDelegate class function of `didFinishConfiguringLaunch.`
 
 ```
-ASDebugger.start(withAppKey: "[YourAppKey]")
+ASDebugger.start(withAppKey: "[Your AppKey]", secret:"[Your Secret]")
 ```
 
 Stop recording
@@ -45,7 +45,7 @@ pod 'ASDebugger', :git => 'https://github.com/AppScaffold/ASDebugger.git'
 ## Mock
 
 ```
-ASDebugger.start(withAppKey: "[YourAppKey]").enableMock(withPath: "[API]")
+ASDebugger.start(withAppKey: "[YourAppKey]", secret:"[Your Secret]").enableMock(withPath: "[API]")
 ```
 
 ## Author

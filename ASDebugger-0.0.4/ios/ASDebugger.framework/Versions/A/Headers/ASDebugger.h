@@ -13,19 +13,20 @@
 
 @property (nonatomic, strong, readonly) NSString *recorderHost;
 @property (nonatomic, strong, readonly) NSString *recorderAppKey;
+@property (nonatomic, strong, readonly) NSString *recorderAppSecret;
 
 @property (nonatomic, readonly, getter=isTracking) BOOL tracking;
 
 + (instancetype)shared;
 
 // Default host is http://appscaffold.net
-+ (instancetype)startWithAppKey:(NSString *)key;
++ (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret;
 
 // Custom host
-+ (instancetype)startWithAppKey:(NSString *)key customHost:(NSString *)host;
++ (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host;
 
 // There is initialized with App key only. will not track request immediately. you could open it manually if you need to launch tracking, calls -start
-+ (instancetype)initWithAppKey:(NSString *)key;
++ (instancetype)initWithAppKey:(NSString *)key secret:(NSString *)secret;
 
 - (void)start;
 

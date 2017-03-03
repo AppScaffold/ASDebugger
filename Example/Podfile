@@ -10,6 +10,4 @@ end
 
 target 'ASDebugger_Tests' do
   pod 'ASDebugger'
-
-  pod 'FBSnapshotTestCase'
 end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "ASDebugger"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
   s.summary = "ASDebugger is a remote debugging toolset for your native iOS app."
   s.license = "MIT"
   s.authors = {"square"=>"square.zhao.wei@gmail.com"}
