@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ASDebugger"
-  s.version          = "0.0.4"
+  s.version          = "0.0.5"
   s.summary          = "ASDebugger is a remote debugging toolset for your native iOS app."
 
   s.description      = <<-DESC
@@ -27,12 +27,8 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |c|
-    c.vendored_frameworks = "#{s.name}-#{s.version.to_s}/ios/#{s.name}.framework"
+    c.source_files  = 'Pod/Classes/**/*'
+    c.public_header_files = "Pod/Classes/**/*.h"
   end
-
-  s.subspec 'Debug' do |d|
-    d.source_files  = 'Pod/Classes/**/*'
-    d.public_header_files = "Pod/Classes/**/*.h"
-  end
-
+  
 end
