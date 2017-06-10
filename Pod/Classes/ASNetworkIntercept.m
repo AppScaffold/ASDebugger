@@ -78,7 +78,7 @@ static NSString *ASInterceptURLHeader = @"X-ASIntercept";
     return NO;
 }
 
-- (NSString *)mockUrl:(NSURL *)url
+- (NSURL *)mockUrl:(NSURL *)url
 {
     if ([ASDebugger shared].mockUrl) {
         return [NSURL URLWithString:[ASDebugger shared].mockUrl];
