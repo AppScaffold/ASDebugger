@@ -108,9 +108,7 @@
  */
 + (void)injectURLSessionClass {
     SEL originalSelector = @selector(sessionWithConfiguration:delegate:delegateQueue:);
-    SEL swizzledSelector = @selector(ex_sessionWithConfiguration:delegate:delegateQueue:);
-    
-    Class meta_cls = objc_getMetaClass("NSURLSession");
+    SEL swizzledSelector = NSSelectorFromString(@"ex_sessionWithConfiguration:delegate:delegateQueue:");
     
     [self replaceImplementationOfKnownSelector:originalSelector onClass:objc_getMetaClass("NSURLSession") withBlock:^NSURLSession*(NSURLSession *slf, NSURLSessionConfiguration *configuration, id <NSURLSessionDelegate> delegate, NSOperationQueue *queue){
         configuration.protocolClasses = @[[ASNetworkIntercept class]];
