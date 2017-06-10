@@ -7,17 +7,15 @@
 //
 
 #import "ASDAppDelegate.h"
-#import "ASDebugger/ASDebugger.h"
 #import "ASDViewController.h"
+#import "ASDebugger.h"
 
 @implementation ASDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     ASDViewController *vc = [ASDViewController new];
-    
-    [ASDebugger startWithAppKey:@"cac4d9b62e46a654778e", secret:@"4193d59f-fc56-4e47-abe8-6de9d508ca1f"];
-//  [ASDebugger initWithAppKey:@"cac4d9b62e46a654778e", secret:@"4193d59f-fc56-4e47-abe8-6de9d508ca1f"];
+    [ASDebugger startWithAppKey:@"d72c151e3a0748fc4d5f" secret:@"670b2454-d5e5-4fc9-8c12-4a6e62049f39"];
     
 //    [[ASDebugger shared] enableMock];
 //    [[ASDebugger shared] enableMockWithPath:@"user/profile"];
