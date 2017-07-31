@@ -51,7 +51,7 @@
 + (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host inject:(BOOL)inject
 {
     if (!host) {
-        host = @"http://appscaffold.net";
+        host = @"https://appscaffold.net";
     }
     
     ASDebugger *config = [[self class] shared];
