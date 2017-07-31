@@ -1,0 +1,6 @@
+framework module ASDebugger {
+  umbrella header "ASDebugger-umbrella.h"
+
+  export *
+  module * { export * }
+}
