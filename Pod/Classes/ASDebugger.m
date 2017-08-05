@@ -9,6 +9,8 @@
 #import "ASDebugger.h"
 #import <objc/message.h>
 
+static NSString * const ASDefaultRemoteRecordHost = @"https://appscaffold.net";
+
 @interface ASDebugger ()
 
 @property (nonatomic, strong) NSString *mockPath;
@@ -40,18 +42,18 @@
 
 + (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host
 {
-    return [self startWithAppKey:key secret:secret customHost:host inject:YES];
+    return [self initWithAppKey:key secret:secret customHost:host track:YES];
 }
 
 + (instancetype)initWithAppKey:(NSString *)key secret:(NSString *)secret
 {
-    return [self startWithAppKey:key secret:secret customHost:nil inject:NO];
+    return [self initWithAppKey:key secret:secret customHost:nil track:NO];
 }
 
-+ (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host inject:(BOOL)inject
++ (instancetype)initWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host track:(BOOL)track
 {
     if (!host) {
-        host = @"https://appscaffold.net";
+        host = ASDefaultRemoteRecordHost;
     }
     
     ASDebugger *config = [[self class] shared];
@@ -59,18 +61,29 @@
     config->_recorderHost = host;
     config->_recorderAppKey = key;
     config->_recorderAppSecret = secret;
-    config->_tracking = inject;
     
     [NSURLProtocol registerClass:[ASNetworkIntercept class]];
     
     [self injectURLSessionClass];
+
+    if (track) {
+        [config start];
+    } else {
+        [config stop];
+    }
     
     return config;
 }
 
 - (void)start
 {
-    _tracking = true;
+    if (_recorderAppKey != nil && _recorderAppSecret != nil) {
+        _tracking = true;
+    } else {
+#if DEBUG
+        NSLog(@"[ASDebugger] error: key or secret is empty! ");
+#endif
+    }
 }
 
 - (void)stop

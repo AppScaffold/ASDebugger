@@ -8,7 +8,7 @@
 
 #import "ASNetworkIntercept.h"
 
-static NSString *ASInterceptURLHeader = @"X-ASIntercept";
+static NSString * const ASInterceptURLHeader = @"X-ASIntercept";
 
 @interface ASNetworkIntercept ()
 
