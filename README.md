@@ -9,6 +9,15 @@ ASDebugger is a remote debugging toolset for iOS App. It is a client library and
 
 it can remote debugging network requests, effortlessly Mock Data, Intergrated with iOS easily, without any tooling involved like Charles
 
+## Features
+
+- [x] Remote debugging network request, response from iOS client without tools
+- [x] Mock Data by manually set up on iOS client
+- [x] Easily create mock response struct via live network response 
+- [x] Automatically refresh observer network page on the Web client once acquire some response from iOS Client
+- [ ] Automatically set mock environment on iOS client once set mock struct on the platform
+- [ ] Transport Data could be compress
+
 ## Usage
 
 Please register an appkey on [AppScaffold](http://www.appscaffold.net) WebSite

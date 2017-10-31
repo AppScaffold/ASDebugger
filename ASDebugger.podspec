@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
+  s.dependency 'SocketRocket', '~> 0.5.1'
 
   s.default_subspec = 'Core'
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASNetworkIntercept.h"
+#import "SocketRocket.h"
 
 @interface ASDebugger : NSObject
 
@@ -38,6 +39,7 @@
 @property (nonatomic, strong, readonly) NSString *mockPath;
 @property (nonatomic, strong) NSString *mockUrl;
 
+// Manually enable mock settings
 - (void)enableMock;
 
 - (void)enableMockWithPath:(NSString *)path;
