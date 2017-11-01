@@ -83,6 +83,7 @@ static NSString * const ASDefaultRemoteWebSocketPath = @"https://appscaffold.net
     if (_recorderAppKey != nil && _recorderAppSecret != nil) {
         _tracking = true;
         
+        // By default, it will connect to mock server automatically
         [self connectMockServer];
     } else {
 #if DEBUG
@@ -99,12 +100,12 @@ static NSString * const ASDefaultRemoteWebSocketPath = @"https://appscaffold.net
 - (void)enableMock
 {
     _mocking = YES;
-    [self connectMockServer];
 }
 
 - (void)disableMock
 {
     _mocking = NO;
+    [self clearMockPathAndUrl];
     [self closeMockServer];
 }
 
@@ -118,6 +119,11 @@ static NSString * const ASDefaultRemoteWebSocketPath = @"https://appscaffold.net
 {
     [self enableMockWithPath:path];
     _mockUrl = url;
+}
+
+- (void)clearMockPathAndUrl {
+    _mockPath = nil;
+    _mockUrl = nil;
 }
 
 /** Inject NSURLSession */
@@ -162,11 +168,15 @@ static NSString * const ASDefaultRemoteWebSocketPath = @"https://appscaffold.net
     NSLog(@"ASDebugger: MockServer recevie message %@", message);
 #endif
     _socketConnectRetryTimes = 0;
-    if ([message isKindOfClass:[NSString class]] && [message hasPrefix:@"m:"]) {
+    if ([message isKindOfClass:[NSString class]]) {
         NSString *originText = message;
-        NSRange range = NSMakeRange(2, originText.length - 2);
-        NSString *api = [message substringWithRange:range];
-        [[ASDebugger shared] enableMockWithPath:api];
+        if ([originText isEqualToString:@"mc:clear"]) {
+            [self clearMockPathAndUrl];
+        } else if ([originText hasPrefix:@"m:"]) {
+            NSRange range = NSMakeRange(2, originText.length - 2);
+            NSString *api = [message substringWithRange:range];
+            [self enableMockWithPath:api];
+        }
     }
 }
 
