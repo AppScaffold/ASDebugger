@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASNetworkIntercept.h"
-#import "SocketRocket.h"
+#import <SocketRocket/SRWebSocket.h>
 
 @interface ASDebugger : NSObject
 
