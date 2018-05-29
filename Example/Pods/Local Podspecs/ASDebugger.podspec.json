@@ -1,6 +1,6 @@
 {
   "name": "ASDebugger",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "summary": "ASDebugger is a remote debugging toolset for your native iOS app.",
   "description": "Remote debugging network requests, effortlessly Mock Data, Intergrated with iOS easily, without any tooling involved like Charles.",
   "homepage": "https://github.com/AppScaffold/ASDebugger",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/AppScaffold/ASDebugger.git",
-    "tag": "0.0.7"
+    "tag": "0.0.8"
   },
   "platforms": {
     "ios": "8.0"

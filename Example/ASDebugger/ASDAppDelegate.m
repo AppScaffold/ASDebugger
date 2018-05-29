@@ -15,15 +15,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     ASDViewController *vc = [ASDViewController new];
-    [ASDebugger startWithAppKey:@"d72c151e3a0748fc4d5f" secret:@"670b2454-d5e5-4fc9-8c12-4a6e62049f39"];
-    
+    [ASDebugger startWithAppKey:@"9e36f8512cb53f2c24f5" secret:@"0382d107-6137-4678-a692-bf6d569adf37"];
+
+    // Manually mock set up
 //    [[ASDebugger shared] enableMock];
 //    [[ASDebugger shared] enableMockWithPath:@"user/profile"];
 //    [[ASDebugger shared] enableMockWithPath:@"user/profile" mockUrl:@"http://www.google.com/user/profile"];
-//    [[ASDebugger shared] stop];
-    
-//    [[ASDebugger shared] start];
 //    [[ASDebugger shared] disableMock];
+    
+//    [[ASDebugger shared] stop];
+//    [[ASDebugger shared] start];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = vc;
