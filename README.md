@@ -5,9 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/ASDebugger.svg?style=flat)](http://cocoapods.org/pods/ASDebugger)
 [![Platform](https://img.shields.io/cocoapods/p/ASDebugger.svg?style=flat)](http://cocoapods.org/pods/ASDebugger)
 
-ASDebugger is a remote debugging toolset for iOS App. It is a client library and gateway server combination
+ASDebugger is a remote debugging toolset for iOS App. 
 
-it can remote debugging network requests, effortlessly Mock Data, Intergrated with iOS easily, without any tooling involved like Charles
+it's a way remotely check any network transaction, effortlessly Mock Data, It is able to intergrate with CocoaPods easily, also it's alternative for proxy tools like Charles.
 
 ## Features
 
@@ -15,14 +15,14 @@ it can remote debugging network requests, effortlessly Mock Data, Intergrated wi
 - [x] Mock Data by manually set up on iOS client
 - [x] Easily create mock response struct via live network response 
 - [x] Automatically refresh observer network page on the Web client once acquire some response from iOS Client
-- [ ] Automatically set mock environment on iOS client once set mock struct on the platform
+- [x ] Automatically set mock environment on iOS client once set mock struct on the platform
 - [ ] Transport Data could be compress
 
 ## Usage
 
-Please register an appkey on [AppScaffold](http://www.appscaffold.net) WebSite
+Register an appkey on [AppScaffold](http://www.appscaffold.net) WebSite
 
-And then we mostly put launch code in the AppDelegate class function of `didFinishConfiguringLaunch.`
+And then place init codes into the AppDelegate function  `didFinishConfiguringLaunch.`
 
 ```
 ASDebugger.start(withAppKey: "[Your AppKey]", secret:"[Your Secret]")
