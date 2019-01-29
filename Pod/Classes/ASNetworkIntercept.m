@@ -12,10 +12,6 @@ static NSString * const ASInterceptURLHeader = @"X-ASIntercept";
 
 @interface ASNetworkIntercept ()
 
-@property (nonatomic, readwrite, strong) NSMutableData *data;
-
-@property (nonatomic, readwrite, strong) NSURLResponse *response;
-
 @property (nonatomic, readwrite, strong) NSURLSessionDataTask *sessionTask;
 
 @property (nonatomic, strong) NSDate *startTime;
@@ -97,8 +93,10 @@ static NSString * const ASInterceptURLHeader = @"X-ASIntercept";
     }
     
     NSURLSession *session = [NSURLSession sharedSession];
+
+    __weak typeof(self) weakSelf = self;
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     self.startTime = [NSDate date];
-    
     self.sessionTask =
     [session dataTaskWithRequest:connectionRequest
                completionHandler:
@@ -127,9 +125,12 @@ static NSString * const ASInterceptURLHeader = @"X-ASIntercept";
 //             NSLog(@"[ASDebugger] error: \n debugger error:%@", error);
 #endif
          }
+
+         dispatch_semaphore_signal(semaphore);
      }];
     
     [self.sessionTask resume];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 }
 
 - (void)record:(NSURLRequest *)request startTime:(NSDate *)startTime data:(NSData *)data response:(NSURLResponse *)response {
@@ -193,12 +194,6 @@ static NSString * const ASInterceptURLHeader = @"X-ASIntercept";
 
 @end
 
-
-@interface RecordInfo ()
-
-- (NSDictionary *)dict;
-
-@end
 
 @implementation RecordInfo
 
