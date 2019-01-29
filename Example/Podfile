@@ -2,10 +2,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'ASDebugger_Example' do
-    pod 'ASDebugger', :path => "../"
-  pod 'AFNetworking', '3.1.0'
+  pod 'ASDebugger', :path => "../"
+  pod 'AFNetworking', '~> 3.2.1'
   pod 'ASIHTTPRequest', '1.8.2'
-  pod 'SDWebImage', '3.8.2'
+  pod 'SDWebImage', '~> 4.4.3'
 end
 
 target 'ASDebugger_Tests' do

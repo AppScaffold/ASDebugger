@@ -300,7 +300,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ASDebugger_Example/Pods-ASDebugger_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ASDebugger_Example/Pods-ASDebugger_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ASDebugger/ASDebugger.framework",
 				"${BUILT_PRODUCTS_DIR}/ASIHTTPRequest/ASIHTTPRequest.framework",
@@ -319,7 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASDebugger_Example/Pods-ASDebugger_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ASDebugger_Example/Pods-ASDebugger_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5223E501007CE0C5DEE80674 /* [CP] Check Pods Manifest.lock */ = {
@@ -346,7 +346,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ASDebugger_Tests/Pods-ASDebugger_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ASDebugger_Tests/Pods-ASDebugger_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ASDebugger/ASDebugger.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 			);
@@ -357,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASDebugger_Tests/Pods-ASDebugger_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ASDebugger_Tests/Pods-ASDebugger_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AD72754540BD4BD33157445C /* [CP] Check Pods Manifest.lock */ = {

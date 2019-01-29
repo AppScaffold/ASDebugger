@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - ASDebugger (0.0.8):
     - ASDebugger/Core (= 0.0.8)
@@ -33,19 +33,19 @@ PODS:
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
   - Reachability (3.2)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
   - SocketRocket (0.5.1)
 
 DEPENDENCIES:
-  - AFNetworking (= 3.1.0)
+  - AFNetworking (~> 3.2.1)
   - ASDebugger (from `../`)
   - ASIHTTPRequest (= 1.8.2)
-  - SDWebImage (= 3.8.2)
+  - SDWebImage (~> 4.4.3)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - ASIHTTPRequest
     - Reachability
@@ -57,13 +57,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  ASDebugger: 6e7b90439ba20cfe60bfa8d9cd9e4d1ddeebad3d
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  ASDebugger: 78c06b092136b1e3c8db6d2ec8fefe45b31e0013
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: 97331869871e02b32f9ab1f9526fa22dd6bc6f1c
+PODFILE CHECKSUM: 6c91de83afeec8e90bbce4ff27fba25a12637f75
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.0.beta.2
