@@ -15,7 +15,7 @@ static NSString *kAPI = @"https://itunes.apple.com/search?term=square&country=gb
 
 static NSArray *NetworkSDKType ()
 {
-    return @[@"NSURLConnection", @"NSURLSession", @"ASIHTTPRequest", @"AFNetworking", @"SDWebImage"];
+    return @[@"NSURLSession", @"AFNetworking", @"SDWebImage"];
 }
 
 @interface ASDViewController ()
@@ -64,57 +64,43 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             NSURL *URL = [NSURL URLWithString:kAPI];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            [NSURLConnection sendAsynchronousRequest:request
-                                               queue:[NSOperationQueue mainQueue]
-                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                                       
-                                   }];
-        }
-            break;
-        case 1:
-        {
-            NSURL *URL = [NSURL URLWithString:kAPI];
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            
             NSURLSession *session = [NSURLSession sharedSession];
             NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                                     completionHandler:
                                           ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                              // ...
+                                              if (!error) {
+                                                  [self showAlert:@"The request and response has been tracked, let's check it on the website!"];
+                                              } else {
+                                                  [self showAlert:error.localizedDescription];
+                                              }
                                           }];
             
             [task resume];
         }
             break;
-        case 2:
-        {
-            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:kAPI]];
-            [request setCompletionBlock:^{
-                NSLog(@"it completed");
-            }];            
-            request.delegate = self;
-            
-            [request startAsynchronous];
-        }
-            break;
-        case 3:
+        case 1:
         {            
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             [manager GET:kAPI parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                
-                NSLog(@"<INFO> responseObject: %@", responseObject);
-                
+
+                [self showAlert:@"The request and response has been tracked, let's check it on the website!"];
+                NSLog(@"<INFO> response bytes received: %lld", [task countOfBytesReceived]);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                
+
+                [self showAlert:error.localizedDescription];
                 NSLog(@"<ERROR> error: %@", error);
-                
             }];
             break;
         }
-        case 4:
+        case 2:
         {
             [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:@"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"] options:SDWebImageRefreshCached progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-                NSLog(@"%@", image);
+                if (!error) {
+                    [self showAlert:@"The image data has been tracked, let's check it on the website!"];
+                    NSLog(@"%@", image);
+                } else {
+                    [self showAlert:error.localizedDescription];
+                }
             }];
         }
         default:
@@ -130,6 +116,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     
+}
+
+- (void)showAlert:(NSString *)msg {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController* vc = [UIAlertController alertControllerWithTitle:@"Message" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
 }
 
 @end
