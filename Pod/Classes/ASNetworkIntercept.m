@@ -102,8 +102,6 @@ static NSString * const ASInterceptURLHeader = @"X-ASIntercept";
                completionHandler:
      ^(NSData *data, NSURLResponse *response, NSError *error) {
          
-         __weak typeof(self) weakSelf = self;
-         
          [weakSelf record:weakSelf.request startTime:weakSelf.startTime data:data response:response];
          
          if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
