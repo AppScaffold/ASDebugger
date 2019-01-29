@@ -15,7 +15,7 @@ it's a way remotely check any network transaction, effortlessly Mock Data, It is
 - [x] Mock Data by manually set up on iOS client
 - [x] Easily create mock response struct via live network response 
 - [x] Automatically refresh observer network page on the Web client once acquire some response from iOS Client
-- [x ] Automatically set mock environment on iOS client once set mock struct on the platform
+- [x] Automatically set mock environment on iOS client once set mock struct on the platform
 - [ ] Transport Data could be compress
 
 ## Usage
