@@ -34,12 +34,10 @@
 - (void)stop;
 
 // Mock
-
 @property (nonatomic, readonly, getter=isMocking)  BOOL mocking;
-@property (nonatomic, strong, readonly) NSString *mockPath;
-@property (nonatomic, strong) NSString *mockUrl;
+@property (nonatomic, readonly, strong) NSString *mockUrl;
+@property (nonatomic, readonly, strong) NSString *mockPath;
 
-// Manually enable mock settings
 - (void)enableMock;
 
 - (void)enableMockWithPath:(NSString *)path;

@@ -14,7 +14,6 @@ static NSString * const ASDefaultRemoteWebSocketPath = @"https://appscaffold.net
 
 @interface ASDebugger () <SRWebSocketDelegate>
 
-@property (nonatomic, strong) NSString *mockPath;
 @property (nonatomic, strong) SRWebSocket *socket;
 @property (nonatomic) NSInteger socketConnectRetryTimes;
 
