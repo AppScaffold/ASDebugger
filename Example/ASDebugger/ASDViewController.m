@@ -7,7 +7,6 @@
 //
 
 #import "ASDViewController.h"
-#import "ASIHTTPRequest.h"
 #import "AFNetworking.h"
 #import "SDWebImageManager.h"
 
@@ -106,16 +105,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         default:
             break;
     }
-}
-
-- (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
-{
-    
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    
 }
 
 - (void)showAlert:(NSString *)msg {
