@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASNetworkIntercept.h"
+#import <SocketRocket/SRWebSocket.h>
 
 @interface ASDebugger : NSObject
 
@@ -33,10 +34,9 @@
 - (void)stop;
 
 // Mock
-
 @property (nonatomic, readonly, getter=isMocking)  BOOL mocking;
-@property (nonatomic, strong, readonly) NSString *mockPath;
-@property (nonatomic, strong) NSString *mockUrl;
+@property (nonatomic, readonly, strong) NSString *mockUrl;
+@property (nonatomic, readonly, strong) NSString *mockPath;
 
 - (void)enableMock;
 

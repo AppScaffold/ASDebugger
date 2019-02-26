@@ -1,53 +1,50 @@
 PODS:
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - ASDebugger (0.0.5):
-    - ASDebugger/Core (= 0.0.5)
-  - ASDebugger/Core (0.0.5)
-  - ASIHTTPRequest (1.8.2):
-    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
-    - ASIHTTPRequest/CloudFiles (= 1.8.2)
-    - ASIHTTPRequest/Core (= 1.8.2)
-    - ASIHTTPRequest/S3 (= 1.8.2)
-  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
-    - ASIHTTPRequest/Core
-  - ASIHTTPRequest/CloudFiles (1.8.2):
-    - ASIHTTPRequest/Core
-  - ASIHTTPRequest/Core (1.8.2):
-    - Reachability
-  - ASIHTTPRequest/S3 (1.8.2):
-    - ASIHTTPRequest/Core
-  - Reachability (3.2)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - ASDebugger (0.0.8):
+    - ASDebugger/Core (= 0.0.8)
+    - SocketRocket (~> 0.5.1)
+  - ASDebugger/Core (0.0.8):
+    - SocketRocket (~> 0.5.1)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
+  - SocketRocket (0.5.1)
 
 DEPENDENCIES:
-  - AFNetworking (= 3.0.4)
-  - ASDebugger
-  - ASIHTTPRequest (= 1.8.2)
-  - SDWebImage (= 3.8.2)
+  - AFNetworking (~> 3.2.1)
+  - ASDebugger (from `../`)
+  - SDWebImage (~> 4.4.3)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - SDWebImage
+    - SocketRocket
+
+EXTERNAL SOURCES:
+  ASDebugger:
+    :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  ASDebugger: 971ae75991edb901e89ca6d8d16ae538521a45c3
-  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  ASDebugger: 6e7b90439ba20cfe60bfa8d9cd9e4d1ddeebad3d
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: 61a6726f6bcc5a7feb4e1ccfd0ac1afb8b3b5abc
+PODFILE CHECKSUM: c441a36703c69cadbcded0e9b0ebc06587c25efe
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

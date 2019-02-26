@@ -9,9 +9,13 @@
 #import "ASDebugger.h"
 #import <objc/message.h>
 
-@interface ASDebugger ()
+static NSString * const ASDefaultRemoteRecordHost = @"https://appscaffold.net";
+static NSString * const ASDefaultRemoteWebSocketPath = @"https://appscaffold.net/websocket";
 
-@property (nonatomic, strong) NSString *mockPath;
+@interface ASDebugger () <SRWebSocketDelegate>
+
+@property (nonatomic, strong) SRWebSocket *socket;
+@property (nonatomic) NSInteger socketConnectRetryTimes;
 
 @end
 
@@ -40,18 +44,18 @@
 
 + (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host
 {
-    return [self startWithAppKey:key secret:secret customHost:host inject:YES];
+    return [self initWithAppKey:key secret:secret customHost:host track:YES];
 }
 
 + (instancetype)initWithAppKey:(NSString *)key secret:(NSString *)secret
 {
-    return [self startWithAppKey:key secret:secret customHost:nil inject:NO];
+    return [self initWithAppKey:key secret:secret customHost:nil track:NO];
 }
 
-+ (instancetype)startWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host inject:(BOOL)inject
++ (instancetype)initWithAppKey:(NSString *)key secret:(NSString *)secret customHost:(NSString *)host track:(BOOL)track
 {
     if (!host) {
-        host = @"http://appscaffold.net";
+        host = ASDefaultRemoteRecordHost;
     }
     
     ASDebugger *config = [[self class] shared];
@@ -59,18 +63,32 @@
     config->_recorderHost = host;
     config->_recorderAppKey = key;
     config->_recorderAppSecret = secret;
-    config->_tracking = inject;
     
     [NSURLProtocol registerClass:[ASNetworkIntercept class]];
     
     [self injectURLSessionClass];
+
+    if (track) {
+        [config start];
+    } else {
+        [config stop];
+    }
     
     return config;
 }
 
 - (void)start
 {
-    _tracking = true;
+    if (_recorderAppKey != nil && _recorderAppSecret != nil) {
+        _tracking = true;
+        
+        // By default, it will connect to mock server automatically
+        [self connectMockServer];
+    } else {
+#if DEBUG
+        NSLog(@"[ASDebugger] error: key or secret is empty! ");
+#endif
+    }
 }
 
 - (void)stop
@@ -86,19 +104,25 @@
 - (void)disableMock
 {
     _mocking = NO;
+    [self clearMockPathAndUrl];
+    [self closeMockServer];
 }
 
 - (void)enableMockWithPath:(NSString *)path
 {
     _mockPath = path;
-    _mocking = YES;
+    [self enableMock];
 }
 
 - (void)enableMockWithPath:(NSString *)path mockUrl:(NSString *)url
 {
-    _mockPath = path;
-    _mocking = YES;
+    [self enableMockWithPath:path];
     _mockUrl = url;
+}
+
+- (void)clearMockPathAndUrl {
+    _mockPath = nil;
+    _mockUrl = nil;
 }
 
 /** Inject NSURLSession */
@@ -131,6 +155,68 @@
     method_exchangeImplementations(originalMethod, newMethod);
     
 //    NSLog(@"%@", [class performSelector:@selector(_methodDescription)]);
+}
+
+/**
+ MARK: Web Socket
+ 
+ Automatically enable mock environment via WebSocket from mock server settings
+ */
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
+#if DEBUG
+    NSLog(@"ASDebugger: MockServer recevie message %@", message);
+#endif
+    _socketConnectRetryTimes = 0;
+    if ([message isKindOfClass:[NSString class]]) {
+        NSString *originText = message;
+        if ([originText isEqualToString:@"mc:clear"]) {
+            [self clearMockPathAndUrl];
+        } else if ([originText hasPrefix:@"m:"]) {
+            NSRange range = NSMakeRange(2, originText.length - 2);
+            NSString *api = [message substringWithRange:range];
+            [self enableMockWithPath:api];
+        }
+    }
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload {
+#if DEBUG
+    NSLog(@"ASDebugger: MockServer recevie pong!");
+#endif
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+#if DEBUG
+    NSLog(@"ASDebugger: MockServer did fail connect!");
+#endif
+    [self connectMockServer];
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
+{
+#if DEBUG
+    NSLog(@"ASDebugger: MockServer is closed!");
+#endif
+    [self connectMockServer];
+}
+
+- (void)connectMockServer {
+    if (_socketConnectRetryTimes >= 3) {
+#if DEBUG
+    NSLog(@"ASDebugger: trying connect to mock server too much!");
+#endif
+        return;
+    }
+    
+    _socketConnectRetryTimes += 1;
+    
+    self.socket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:ASDefaultRemoteWebSocketPath]];
+    self.socket.delegate = self;
+    [self.socket open];
+}
+
+- (void)closeMockServer {
+    [self.socket close];
 }
 
 @end
