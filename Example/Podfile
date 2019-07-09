@@ -4,7 +4,7 @@ use_frameworks!
 target 'ASDebugger_Example' do
   pod 'ASDebugger', :path => "../"
   pod 'AFNetworking', '~> 3.2.1'
-  pod 'SDWebImage', '~> 4.4.3'
+  pod 'SDWebImage', '~> 5.0.0'
 end
 
 target 'ASDebugger_Tests' do
